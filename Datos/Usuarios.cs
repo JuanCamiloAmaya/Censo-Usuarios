@@ -81,5 +81,19 @@ namespace Datos
             comando.ExecuteNonQuery();
             comando.Parameters.Clear();
         }
+
+        public DataTable BuscarUsuarios(string cedula)
+        {
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "BuscarUsuarios";
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@cedula", cedula);
+            leer = comando.ExecuteReader();
+            tabla.Load(leer);
+            comando.ExecuteNonQuery();
+            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return tabla;
+        }
     }
 }

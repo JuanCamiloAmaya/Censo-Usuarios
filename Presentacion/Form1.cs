@@ -25,6 +25,7 @@ namespace Presentacion
         {
             MostarUsuarios();
             datetime.CustomFormat = "dd/MM/yyyy hh:mm tt";
+            btnVolver.Hide();
         }
 
         private void MostarUsuarios()
@@ -155,6 +156,20 @@ namespace Presentacion
             {
                 campos = true;
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            NUsuarios BUsu = new NUsuarios();
+            dataGridView.DataSource = BUsu.BuscarUsuarios(txtCedula.Text);
+            btnVolver.Show();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            MostarUsuarios();
+            btnVolver.Hide();
+            txtBuscar.Clear();
         }
     }
 }

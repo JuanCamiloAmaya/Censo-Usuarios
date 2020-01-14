@@ -34,5 +34,12 @@ namespace Negocio
         {
             DUsu.EliminarUsuarios(Convert.ToInt32(id));
         }
+
+        public DataTable BuscarUsuarios(string cedula)
+        {
+            DataTable tabla = new DataTable();
+            tabla = DUsu.BuscarUsuarios(cedula);
+            return tabla;
+        }
     }
 }
